@@ -1,0 +1,6 @@
+moon::ipsec stop
+sun::ipsec stop
+moon::ip -s tunnel # directly quering vti0 does not get us stats as iproute2 derives the type from the name
+moon::ip tunnel del vti0
+sun::ip -s tunnel show ipsec0
+sun::ip tunnel del ipsec0

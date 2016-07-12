@@ -1,0 +1,6 @@
+A connection between the subnets behind the gateways <b>moon</b> and <b>sun</b>
+is set up using GRE interfaces. The IPsec policies are set up for a protocol-specific
+host-host connection, the traffic to tunnel is specified via routes.
+The authentication is based on <b>X.509 certificates</b>.
+In order to test both tunnel and firewall, client <b>alice</b> behind gateway <b>moon</b>
+pings client <b>bob</b> located behind gateway <b>sun</b>.

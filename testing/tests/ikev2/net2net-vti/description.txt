@@ -1,0 +1,6 @@
+A connection between the subnets behind the gateways <b>moon</b> and <b>sun</b>
+is set up using VTI interfaces. The IPsec policies are set up for 0.0.0.0/0 on both
+ends but with marks and routes only specific traffic is actually tunneled.
+The authentication is based on <b>X.509 certificates</b>.
+In order to test both tunnel and firewall, client <b>alice</b> behind gateway <b>moon</b>
+pings client <b>bob</b> located behind gateway <b>sun</b>.

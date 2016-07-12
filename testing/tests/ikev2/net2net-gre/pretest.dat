@@ -1,0 +1,11 @@
+moon::ip tunnel add gre1 local 192.168.0.1 remote 192.168.0.2 mode gre
+moon::ip link set gre1 up
+moon::ip route add 10.2.0.0/16 dev gre1
+sun::ip tunnel add ipsec0 local 192.168.0.2 remote 192.168.0.1 mode gre
+sun::ip link set ipsec0 up
+sun::ip route add 10.1.0.0/16 dev ipsec0
+sun::ipsec start
+moon::ipsec start
+sun::expect-connection net-net
+moon::expect-connection net-net
+moon::ipsec up net-net

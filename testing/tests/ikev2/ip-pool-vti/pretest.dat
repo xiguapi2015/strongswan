@@ -1,0 +1,14 @@
+carol::iptables-restore < /etc/iptables.rules
+dave::iptables-restore < /etc/iptables.rules
+moon::ip tunnel add ipsec0 local 192.168.0.1 remote 0.0.0.0 mode vti key 42
+moon::sysctl -w net.ipv4.conf.ipsec0.disable_policy=1
+moon::ip link set ipsec0 up
+moon::ip route add 10.3.0.0/28 dev ipsec0
+moon::ipsec start
+carol::ipsec start
+dave::ipsec start
+moon::expect-connection rw
+carol::expect-connection home
+carol::ipsec up home
+dave::expect-connection home
+dave::ipsec up home
