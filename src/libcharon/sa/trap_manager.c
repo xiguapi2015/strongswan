@@ -543,7 +543,7 @@ METHOD(trap_manager_t, acquire, void,
 		acquire->ike_sa = ike_sa;
 		this->mutex->unlock(this->mutex);
 
-		if (ike_sa->initiate(ike_sa, child, reqid, src, dst) != DESTROY_ME)
+		if (ike_sa->initiate(ike_sa, child, 0, src, dst) != DESTROY_ME)
 		{
 			charon->ike_sa_manager->checkin(charon->ike_sa_manager, ike_sa);
 		}
